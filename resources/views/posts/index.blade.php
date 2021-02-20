@@ -39,7 +39,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="Eliminar"
-                                            class="btn btn-sm btn-outline-danger"
+                                            class="btn btn-sm btn-danger"
                                             onclick="return confirm('¿Desea Eliminar...?')">
                                     </form>
                                 </td>
