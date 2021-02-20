@@ -40,20 +40,19 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        
-        //FuncionSalvar
+        //Salvar
         $post = Post::create([
             'user_id' => auth()->user()->id
         ] + $request->all());
 
-        //Funcionimage
+        //image
         if($request->file('file')){
             $post->image = $request->file('file')->store('posts', 'public');
             $post->save();
         }
 
-        //retorna
-        return back()->with('status', 'Creado con éxito');
+        //retornar
+        return back()->with('status', 'creado con éxito');
     }
 
     /**
@@ -79,7 +78,7 @@ class PostController extends Controller
         $post->update($request->all());
 
         if ($request->file('file')) {
-            //eliminar imagen
+        
             Storage::disk('public')->delete($post->image);
             $post->image = $request->file('file')->store('posts', 'public');
             $post->save();
@@ -87,6 +86,7 @@ class PostController extends Controller
 
         return back()->with('status', 'Actualizado con éxito');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -96,7 +96,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //Eliminación de la imagen
+        //eliminar imagen
         Storage::disk('public')->delete($post->image);
         $post->delete();
 
