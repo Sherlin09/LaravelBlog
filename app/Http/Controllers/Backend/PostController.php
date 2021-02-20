@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Storage;
 
+
 class PostController extends Controller
 {
     /**
@@ -39,19 +40,20 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        //Salvar
+        
+        //FuncionSalvar
         $post = Post::create([
             'user_id' => auth()->user()->id
         ] + $request->all());
 
-        //image
+        //Funcionimage
         if($request->file('file')){
             $post->image = $request->file('file')->store('posts', 'public');
             $post->save();
         }
 
-        //retornar
-        return back()->with('status', 'creado con éxito');
+        //retorna
+        return back()->with('status', 'Creado con éxito');
     }
 
     /**
