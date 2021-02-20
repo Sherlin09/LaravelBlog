@@ -31,7 +31,7 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>
-                                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-success btn-sm">
+                                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary btn-sm">
                                     Editar</a>
                                 </td>
                                 <td>
